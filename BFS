@@ -1,0 +1,58 @@
+def insert(adj, u, v):
+
+	adj[u].append(v)
+	return
+
+def printList(adj, V):
+	
+	for i in range(V):
+		print(i, end = '')
+		
+		for j in adj[i]:
+			print(' --> ' + str(j), end = '')
+			
+		print()
+		
+	print()
+		
+def convert(adj, V):
+
+	matrix = [[0 for j in range(V)]
+				for i in range(V)]
+	
+	for i in range(V):
+		for j in adj[i]:
+			matrix[i][j] = 1
+	
+	return matrix
+
+def printMatrix(adj, V):
+	
+	for i in range(V):
+		for j in range(V):
+			print(adj[i][j], end = ' ')
+			
+		print()
+		
+	print()
+
+if __name__=='__main__':
+
+	V = 8
+
+	adjList = [[] for i in range(V)]
+
+	insert(adjList, 1, 2) 
+	insert(adjList, 2, 7) 
+	insert(adjList, 2, 4) 
+	insert(adjList, 3, 4) 
+	insert(adjList, 4, 6) 
+	insert(adjList, 5, 4) 
+	insert(adjList, 5, 3)
+	insert(adjList, 6, 1)
+	insert(adjList, 7, 5)
+
+	adjMatrix = convert(adjList, V)
+
+	print("Adjacency Matrix: ")
+	printMatrix(adjMatrix, V)
